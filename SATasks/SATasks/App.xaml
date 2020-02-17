@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pull="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+             mc:Ignorable="d"
+             x:Class="SATasks.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#3498DB</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="RefreshStyle" TargetType="pull:PullToRefreshLayout">
+                <Setter Property="RefreshColor" Value="#3498DB"/>
+            </Style>
+
+            <!--COLOR-->
+            <Color x:Key="NotSelectedItem">#1c3f80</Color>
+            <Color x:Key="SecondTitleText">#9197AE</Color>
+            <Color x:Key="BackElement">#377dff</Color>
+            <Color x:Key="Black">#000000</Color>
+            <Color x:Key="Blue">#3498DB</Color>
+            <Color x:Key="Gray">#a6a6a6</Color>
+            <Color x:Key="White">#ffffff</Color>
+            <Color x:Key="Yellow">#f8c201</Color>
+            <Color x:Key="Green">#00c9a7</Color>
+            <Color x:Key="Red">#d23442</Color>
+            <Color x:Key="AppBackgroundColor">#eaeaea</Color>
+            <Color x:Key="SubTitleBackground">#a6a6a6</Color>
+            <Color x:Key="EnterBackgroundColor">#303030</Color>
+
+            <!--FONT SIZE-->
+            <OnPlatform x:Key="MicroSize" x:TypeArguments="x:Double" Android="10" iOS="11" />
+            <!--26-->
+            <OnPlatform x:Key="MiniSize" x:TypeArguments="x:Double" Android="11" iOS="12" />
+            <!--29-->
+            <OnPlatform x:Key="SmallSize" x:TypeArguments="x:Double" Android="14" iOS="13" />
+            <!--33-->
+            <OnPlatform x:Key="MediumSize" x:TypeArguments="x:Double" Android="17" iOS="16" />
+            <!--42-->
+            <OnPlatform x:Key="LargeSize" x:TypeArguments="x:Double" Android="22" iOS="20" />
+            <!--58,5-->
+
+            <!--LABEL-->
+            <Style x:Key="LabelStyleBase" TargetType="Label">
+            </Style>
+            <Style x:Key="Title" TargetType="Label" BasedOn="{StaticResource LabelStyleBase}">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="{StaticResource MediumSize}"/>
+                <Setter Property="Margin" Value="10,5,10,5"/>
+                <Setter Property="LineBreakMode" Value="WordWrap"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="TextSecondTitle" TargetType="Label" BasedOn="{StaticResource LabelStyleBase}">
+                <Setter Property="TextColor" Value="{StaticResource SecondTitleText}"/>
+                <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="10,3,0,3"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            </Style>
+
+            <Style x:Key="FrameInList" TargetType="Frame">
+                <Setter Property="Padding" Value="16"/>
+                <Setter Property="BorderColor"  Value="{StaticResource White}"/>
+                <Setter Property="BackgroundColor"  Value="{StaticResource White}"/>
+                <Setter Property="CornerRadius" Value="3"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+
+            <!--BOXVIEW-->
+
+            <Style x:Key="GrayLineStyle" TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:SATasks.Helpers;assembly=SATasks"
+             mc:Ignorable="d" Title="{Binding Item.Name}"
+             x:Class="SATasks.Views.TaskItemPage" BackgroundColor="LightBlue">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:BooleanConverter x:Key="BooleanConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid Grid.Row="0" VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" Margin="0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand" Margin="10">
+                <Label Text="Заголовок" IsVisible="{Binding IsEditItem}"/>
+                <Label Text="{Binding Item.Name}" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}" FontSize="16" FontAttributes="Bold"/>
+                <Entry x:Name="TitleTask" Text="{Binding Item.Name}" IsVisible="{Binding IsEditItem}" BackgroundColor="Transparent" Placeholder="Введите заголовок" />
+                <Label Text="Описание" IsVisible="{Binding IsEditItem}"/>
+                <Label Text="{Binding Item.Description}" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}"/>
+                <Editor Text="{Binding Item.Description}" IsVisible="{Binding IsEditItem}" HeightRequest="300" BackgroundColor="Transparent" Placeholder="Введите заметку"/>
+            </StackLayout>
+        </ScrollView>
+        
+        <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical" IsVisible="{Binding IsEditItem}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+            <Grid  Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" Margin="0,5,5,0" IsVisible="{Binding IsEditItem}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="ok.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+                <Button x:Name="SaveItemButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Clicked="SaveItem" />
+            </Grid>
+            <Grid  Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" Margin="0,5,5,0" IsVisible="{Binding IsEditItem}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="view.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+                <Button x:Name="ViewItemButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Clicked="ViewBtn" />
+            </Grid>
+        </StackLayout>
+
+        <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+            <Grid Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,5,5,0" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="trash.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+                <Button x:Name="DelItemButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Clicked="DeleteItem" />
+            </Grid>
+            <Grid  Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,5,5,0" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="edit.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+                <Button x:Name="EditItemButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Clicked="EditBtn" />
+            </Grid>
+            <Grid  Grid.Row="0"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,5,5,0" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="share.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+                <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Clicked="ShareItem" />
+            </Grid>
+        </StackLayout>
+        
+        <!--<StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+            <Grid Grid.Row="0" VerticalOptions="End" HorizontalOptions="Start" Margin="10" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="trash.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+                <Button x:Name="DelItemButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Clicked="DeleteItem" />
+            </Grid>
+            <Grid  Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" Margin="10" IsVisible="{Binding IsEditItem, Converter={StaticResource BooleanConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="edit.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+                <Button x:Name="EditItemButton" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Clicked="EditBtn" />
+            </Grid>
+        </StackLayout>-->
+        
+        
+
+    </Grid>
+</ContentPage>
